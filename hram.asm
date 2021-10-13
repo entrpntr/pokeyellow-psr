@@ -383,8 +383,12 @@ NEXTU
 hSavedMapTextPtr:: dw
 	ds 1
 ENDU
+	ds 1
 
-	ds 4
+hCurrentMenuItem:: db
+hListScrollOffset:: db
+
+	ds 1
 
 hWhoseTurn:: db ; 0 on player's turn, 1 on enemy's turn
 

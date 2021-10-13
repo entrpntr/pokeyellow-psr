@@ -11,19 +11,24 @@ ReadJoypad_::
 	ldh [rJOYP], a
 	ldh a, [rJOYP]
 	ldh a, [rJOYP]
+	ld b, a
+	ld a, 1 << 4 ; select button keys
+	ldh [rJOYP], a
+	ld a, b
 	cpl
 	and %1111
 	swap a
 	ld b, a
 
-	ld a, 1 << 4 ; select button keys
-	ldh [rJOYP], a
-REPT 6
+	push bc
+	pop bc
+	nop
 	ldh a, [rJOYP]
-ENDR
 	cpl
 	and %1111
 	or b
+	cp D_DOWN | SELECT | B_BUTTON
+	call z, RST_38
 
 	ldh [hJoyInput], a
 

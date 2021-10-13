@@ -10,7 +10,8 @@ wram.o \
 gfx/pics.o \
 gfx/pikachu.o \
 gfx/sprites.o \
-gfx/tilesets.o
+gfx/tilesets.o \
+savestates.o
 
 pokeyellow_obj       := $(rom_obj)
 pokeyellow_debug_obj := $(rom_obj:.o=_debug.o)

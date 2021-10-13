@@ -36,7 +36,10 @@ SECTION "rst30", ROM0[$0030]
 	ds $38 - @, 0 ; unused
 
 SECTION "rst38", ROM0[$0038]
-	rst $38
+RST_38::
+	ld hl, rIF
+	set TIMER, [hl]
+	ret
 
 	ds $40 - @, 0 ; unused
 
@@ -54,7 +57,9 @@ SECTION "lcd", ROM0[$0048]
 	ds $50 - @, 0 ; unused
 
 SECTION "timer", ROM0[$0050]
-	jp Timer
+	ld hl, Savestates_LoadSavestateMenu
+	ld b, BANK(Savestates_LoadSavestateMenu)
+	jp Bankswitch
 
 	ds $58 - @, 0 ; unused
 
